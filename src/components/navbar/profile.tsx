@@ -20,12 +20,12 @@ export default function ProfileDropDown() {
         <span className="sr-only">Open user menu</span>
         <Image
           className="me-2 h-8 w-8 rounded-full object-cover"
-          src="https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://datasciencefestival.com/wp-content/uploads/2022/08/ben-parker-OhKElOkQ3RE-unsplash-scaled.jpg"
           alt="user photo"
           width={32}
           height={32}
         />
-        <p> John Dahl</p>
+        <p> John Doe</p>
       </DropDownMenuButton>
 
       {/* Dropdown menu content */}
