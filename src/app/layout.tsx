@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-white">
-      <body className={gilory.className}>
+      <body className={gilory.className + " flex min-h-[100dvh]"}>
         <Navbar />
-        <div className="pt-40 md:pt-28">{children}</div>
+        <div className="flex-1 pt-40 md:pt-28">{children}</div>
       </body>
     </html>
   );
