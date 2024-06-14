@@ -4,6 +4,7 @@ import {
   MenuItems,
   MenuItem as OriginalMenuItem,
 } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 
 /**
@@ -35,24 +36,10 @@ export function DropDownMenuButton({
   arrowIcon?: boolean;
 }>) {
   return (
-    <OriginalMenuButton className="hover:text-primary-600 flex items-center rounded-full text-sm font-medium text-gray-900">
+    <OriginalMenuButton className="group/button flex items-center rounded-full text-sm font-medium text-gray-900 hover:text-primary-600">
       {children}
       {arrowIcon && (
-        <svg
-          className="ms-3 h-2.5 w-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
+        <ChevronDownIcon className="ms-1 h-5 w-5 text-gray-700 group-hover/button:text-primary-600" />
       )}
     </OriginalMenuButton>
   );
