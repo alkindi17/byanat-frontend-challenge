@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+
+import Navbar from "@/components/navbar/navbar";
 import { gilory } from "@/fonts/gilory";
 
 export const metadata: Metadata = {
@@ -14,8 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={gilory.className}>{children}</body>
+    <html lang="en" className="bg-white">
+      <body className={gilory.className}>
+        <Navbar />
+        <div className="pt-40 md:pt-28">{children}</div>
+      </body>
     </html>
   );
 }
