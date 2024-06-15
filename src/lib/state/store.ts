@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import staysReducer from "./stays/staysSlics";
+import staysReducer from "./stays/staysSlice";
 
 export const makeStore = () => {
   return configureStore({

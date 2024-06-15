@@ -4,7 +4,7 @@ import {
   toggleFreeCancellation,
   toggleDiscount,
   toggleInstantBook,
-} from "@/lib/state/stays/staysSlics";
+} from "@/lib/state/stays/staysSlice";
 import { RootState } from "@/lib/state/store";
 
 /**
@@ -14,13 +14,13 @@ import { RootState } from "@/lib/state/store";
 export default function StaysFilterToggles() {
   // Get the current state of the filters.
   const freeCancellation = useSelector(
-    (state: RootState) => state.stays.filters.freeCancellation,
+    (state: RootState) => state.stays.filters.toggles.freeCancellation,
   );
   const discount = useSelector(
-    (state: RootState) => state.stays.filters.discount,
+    (state: RootState) => state.stays.filters.toggles.discount,
   );
   const instantBook = useSelector(
-    (state: RootState) => state.stays.filters.instantBook,
+    (state: RootState) => state.stays.filters.toggles.instantBook,
   );
 
   // Get the dispatch function.

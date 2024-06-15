@@ -1,5 +1,4 @@
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
-
+import StaysAdvancedFilters from "./stays-advanced-filters";
 import StaysFilterToggles from "./stays-filter-toggles";
 
 /**
@@ -10,9 +9,7 @@ export default function StaysFilter() {
   return (
     <div className="flex items-center justify-between gap-4">
       <StaysFilterToggles />
-      <button>
-        <AdjustmentsHorizontalIcon className="h-6 w-6 hover:text-primary-600" />
-      </button>
+      <StaysAdvancedFilters />
     </div>
   );
 }
