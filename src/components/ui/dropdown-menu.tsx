@@ -62,7 +62,7 @@ export function DropDownMenuContent({
   return (
     <MenuItems
       anchor={anchor}
-      className="z-10 mt-2 divide-y divide-gray-100 rounded-lg border bg-white shadow"
+      className="z-40 mt-2 divide-y divide-gray-100 rounded-lg border bg-white shadow"
     >
       {children}
     </MenuItems>
