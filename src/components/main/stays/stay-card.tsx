@@ -16,39 +16,24 @@ export interface Stay {
   bathrooms: number;
   type: StayType;
   image: string;
+  freeCancellation: boolean;
+  discount: boolean;
+  instantBook: boolean;
 }
 
 /**
  * A card component that displays information about a stay.
- * @param id - The ID of the stay.
- * @param title - The title of the stay.
- * @param rating - The rating of the stay.
- * @param host - The host of the stay.
- * @param guests - The number of guests the stay can accommodate.
- * @param bedrooms - The number of bedrooms in the stay.
- * @param bathrooms - The number of bathrooms in the stay.
- * @param type - The type of stay; one of "Entire Home", "Entire Studio Apartment", or "Share With Super Host".
- * @param image - The image url of the stay.
+ * @param stay - The stay to display.
  * @returns The rendered StayCard component.
  */
-export default function StayCard({
-  id,
-  title,
-  rating,
-  host,
-  guests,
-  bedrooms,
-  bathrooms,
-  type,
-  image,
-}: Stay) {
+export default function StayCard({ stay }: { stay: Stay }) {
   return (
     <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:max-h-[400px] xl:min-h-[200px]">
       {/* Stay Image */}
       <div className="h-full w-full basis-1/2 rounded-2xl bg-red-200 object-cover max-xl:h-[150px]">
         <Image
-          src={image}
-          alt={title}
+          src={stay.image}
+          alt={stay.title}
           width={480}
           height={320}
           className="h-full w-full rounded-xl object-cover"
@@ -58,7 +43,7 @@ export default function StayCard({
       {/* Stay Information */}
       <div className="my-auto flex basis-1/2 flex-col gap-3">
         {/* Stay Title */}
-        <h3 className="text-lg font-extrabold">{title}</h3>
+        <h3 className="text-lg font-extrabold">{stay.title}</h3>
 
         {/* Stay Rating and Host */}
         <div className="flex flex-wrap items-center">
@@ -66,24 +51,24 @@ export default function StayCard({
             <StarIcon className="mb-1 h-5 w-5 text-yellow-300" />
 
             {/* Show rating with one decimal place */}
-            <span>{rating.toFixed(1)}</span>
+            <span>{stay.rating.toFixed(1)}</span>
           </span>
 
           {/* Host name */}
-          <span className="text-sm text-gray-500">{host}</span>
+          <span className="text-sm text-gray-500">{stay.host}</span>
         </div>
 
         {/* Stay number of guests, bedrooms, and bathrooms */}
         <div className="flex flex-wrap gap-1 text-sm text-gray-500">
-          <span>{guests} guests | </span>
-          <span>{bedrooms} bedroom | </span>
-          <span>{bathrooms} bathroom</span>
+          <span>{stay.guests} guests | </span>
+          <span>{stay.bedrooms} bedroom | </span>
+          <span>{stay.bathrooms} bathroom</span>
         </div>
 
         {/* Stay Type */}
         <div className="flex items-center gap-2">
-          <StayTypeIcon type={type} />
-          <span className="text-sm text-gray-500">{type}</span>
+          <StayTypeIcon type={stay.type} />
+          <span className="text-sm text-gray-500">{stay.type}</span>
         </div>
       </div>
     </div>

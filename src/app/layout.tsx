@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Navbar from "@/components/navbar/navbar";
 import { gilory } from "@/fonts/gilory";
+import StoreProvider from "@/lib/state/storeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,11 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white text-gray-700">
-      <body className={gilory.className + " flex h-[100dvh]"}>
-        <Navbar />
-        <div className="flex-1 pt-32 md:pt-20">{children}</div>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en" className="bg-white text-gray-700">
+        <body className={gilory.className + " flex h-[100dvh]"}>
+          <Navbar />
+          <div className="flex-1 pt-32 md:pt-20">{children}</div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
