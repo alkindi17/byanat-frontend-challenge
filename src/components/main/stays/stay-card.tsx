@@ -4,9 +4,10 @@ import Image from "next/image";
 import StayTypeIcon, { StayType } from "./stay-type";
 
 /**
- * Props for the StayCard component.
+ * Represents a stay.
  */
-type StayCardProps = Readonly<{
+export interface Stay {
+  id: number;
   title: string;
   rating: number;
   host: string;
@@ -15,12 +16,23 @@ type StayCardProps = Readonly<{
   bathrooms: number;
   type: StayType;
   image: string;
-}>;
+}
 
 /**
  * A card component that displays information about a stay.
+ * @param id - The ID of the stay.
+ * @param title - The title of the stay.
+ * @param rating - The rating of the stay.
+ * @param host - The host of the stay.
+ * @param guests - The number of guests the stay can accommodate.
+ * @param bedrooms - The number of bedrooms in the stay.
+ * @param bathrooms - The number of bathrooms in the stay.
+ * @param type - The type of stay; one of "Entire Home", "Entire Studio Apartment", or "Share With Super Host".
+ * @param image - The image url of the stay.
+ * @returns The rendered StayCard component.
  */
 export default function StayCard({
+  id,
   title,
   rating,
   host,
@@ -29,7 +41,7 @@ export default function StayCard({
   bathrooms,
   type,
   image,
-}: StayCardProps) {
+}: Stay) {
   return (
     <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:max-h-[400px] xl:min-h-[200px]">
       {/* Stay Image */}
