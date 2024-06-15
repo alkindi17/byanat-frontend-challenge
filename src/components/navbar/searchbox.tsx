@@ -30,6 +30,12 @@ export default function Searchbox() {
     setSearchQuery(e.target.value);
   };
 
+  // clear the query
+  const clearQuery = () => {
+    setSearchQuery("");
+    setQuery("");
+  };
+
   return (
     <div className="relative flex w-full md:max-w-[550px]">
       <select className="cursor-pointer items-center rounded-s-md border-e-0 border-gray-300 px-3 text-sm text-gray-900 focus:border-e-2">
@@ -62,6 +68,7 @@ export default function Searchbox() {
             loading={loading}
             query={debouncedQuery}
             results={results}
+            clearQuery={clearQuery}
           />
         </div>
       )}

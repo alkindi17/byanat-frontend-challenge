@@ -9,6 +9,7 @@ import StayTypeIcon, { StayType } from "./stay-type";
 export interface Stay {
   id: number;
   title: string;
+  city: string;
   rating: number;
   host: string;
   guests: number;

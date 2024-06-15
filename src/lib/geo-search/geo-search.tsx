@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 
 import fetchGeoSearch from "./geo-search-fetch";
 
-interface GeoNamesResponse {
+export interface GeoNamesResponse {
   geonames: {
     name: string;
+    toponymName: string;
     countryName: string;
     countryCode: string;
     lat: string;
@@ -32,6 +33,7 @@ export const useGeoSearch = () => {
     setResults(
       res.geonames.map((result) => ({
         name: result.name,
+        toponymName: result.toponymName,
         countryName: result.countryName,
         countryCode: result.countryCode,
         lat: result.lat,

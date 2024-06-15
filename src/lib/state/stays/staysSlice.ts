@@ -12,6 +12,7 @@ interface StaysState {
   allStays: StaysListType;
   filteredStays: StaysListType;
   filters: {
+    cityQuery: string;
     toggles: {
       freeCancellation: boolean;
       discount: boolean;
@@ -31,6 +32,7 @@ const initialState: StaysState = {
   allStays: staysJson as StaysListType,
   filteredStays: staysJson as StaysListType, // Initially, the filtered stays are the same as the all stays.
   filters: {
+    cityQuery: "",
     toggles: {
       // The filter toggles.
       freeCancellation: false,
@@ -72,7 +74,9 @@ const filterStays = (state: StaysState) => {
           )
         : true) &&
       // Check if stay rating is greater than or equal to the minimum rating filter
-      stay.rating >= state.filters.minimumRating
+      stay.rating >= state.filters.minimumRating &&
+      // Check if stay name contains the query
+      stay.city.toLowerCase().includes(state.filters.cityQuery.toLowerCase())
     );
   });
 };
@@ -106,6 +110,10 @@ const staysSlice = createSlice({
       state.filters.minimumRating = action.payload;
       filterStays(state);
     },
+    setCityQuery: (state, action: PayloadAction<string>) => {
+      state.filters.cityQuery = action.payload;
+      filterStays(state);
+    },
   },
 });
 
@@ -115,6 +123,7 @@ export const {
   toggleInstantBook,
   toggleType,
   setMinimumRating,
+  setCityQuery,
 } = staysSlice.actions;
 
 export default staysSlice.reducer;
