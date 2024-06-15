@@ -1,31 +1,70 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useDebounce } from "use-debounce";
+
+import { useGeoSearch } from "@/lib/geo-search/geo-search";
+
+import SearchBoxHints from "./searchbox-hints";
+import SearchBoxInput from "./searchbox-input";
 
 /**
  * Renders a search box component with a dropdown select, input field, and search button.
  */
 export default function Searchbox() {
+  const { loading, query, setQuery, results } = useGeoSearch();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [debouncedQuery] = useDebounce(searchQuery, 500);
+
+  // Update the query value when the debounced query changes.
+  useEffect(() => {
+    if (debouncedQuery) {
+      setQuery(debouncedQuery);
+    }
+  }, [debouncedQuery, setQuery]);
+
+  // Handle the search query change event.
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
-    <div className="flex w-full md:max-w-[550px]">
+    <div className="relative flex w-full md:max-w-[550px]">
       <select className="cursor-pointer items-center rounded-s-md border-e-0 border-gray-300 px-3 text-sm text-gray-900 focus:border-e-2">
+        {/* The select dropdown options */}
         <option selected value="rent">
           Rent
         </option>
         <option value="buy">Buy</option>
       </select>
 
-      <input
-        type="text"
-        id="search-box"
-        className="block w-full min-w-0 flex-1 border border-gray-300 p-2.5 text-sm text-gray-900"
-        placeholder="Search"
+      {/* The search input field */}
+      <SearchBoxInput
+        query={searchQuery}
+        handleQueryChange={handleQueryChange}
       />
 
+      {/* The search button */}
       <button
         type="button"
-        className="bg-primary-400 hover:bg-primary-500 items-center rounded-e-md p-3 text-white"
+        className="items-center rounded-e-md bg-primary-400 p-3 text-white hover:bg-primary-500"
+        onClick={() => setQuery(searchQuery)}
       >
         <MagnifyingGlassIcon className="h-5 w-5" />
       </button>
+
+      {/* The search box hints */}
+      {debouncedQuery && (
+        <div className="absolute mt-12 w-full">
+          <SearchBoxHints
+            loading={loading}
+            query={debouncedQuery}
+            results={results}
+          />
+        </div>
+      )}
     </div>
   );
 }
