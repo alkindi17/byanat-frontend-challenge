@@ -9,7 +9,7 @@ import Searchbox from "./searchbox";
  */
 export default function Navbar() {
   return (
-    <nav className="fixed w-screen bg-white drop-shadow-[0_1px_30px_rgba(0,0,0,0.06)]">
+    <nav className="fixed z-30 w-screen bg-white drop-shadow-[0_1px_30px_rgba(0,0,0,0.06)]">
       <div className="container mx-auto flex max-w-screen-2xl flex-col gap-4 px-4 py-6">
         <div className="flex items-center justify-between gap-6">
           {/* Logo and Search Box */}
