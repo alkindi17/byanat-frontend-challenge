@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-white">
-      <body className={gilory.className + " flex min-h-[100dvh]"}>
+    <html lang="en" className="bg-white text-gray-700">
+      <body className={gilory.className + " flex h-[100dvh]"}>
         <Navbar />
-        <div className="flex-1 pt-40 md:pt-28">{children}</div>
+        <div className="flex-1 pt-32 md:pt-20">{children}</div>
       </body>
     </html>
   );
