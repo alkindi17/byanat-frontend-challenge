@@ -12,6 +12,7 @@ import SearchBoxInput from "./searchbox-input";
 
 /**
  * Renders a search box component with a dropdown select, input field, and search button.
+ * @returns The rendered Searchbox component.
  */
 export default function Searchbox() {
   const { loading, query, setQuery, results } = useGeoSearch();

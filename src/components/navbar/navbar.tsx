@@ -6,6 +6,7 @@ import Searchbox from "./searchbox";
 
 /**
  * Renders the navigation bar component.
+ * @returns The rendered Navbar component.
  */
 export default function Navbar() {
   return (

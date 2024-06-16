@@ -11,6 +11,7 @@ import {
 
 /**
  * Renders the profile dropdown menu component.
+ * @returns The rendered ProfileDropDown component.
  */
 export default function ProfileDropDown() {
   return (

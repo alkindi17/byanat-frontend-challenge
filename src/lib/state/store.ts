@@ -2,6 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import staysReducer from "./stays/staysSlice";
 
+/**
+ * Creates the Redux store for the application.
+ * @returns The configured Redux store.
+ */
 export const makeStore = () => {
   return configureStore({
     reducer: {

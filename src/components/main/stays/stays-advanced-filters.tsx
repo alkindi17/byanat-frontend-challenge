@@ -10,6 +10,10 @@ import {
 import RatingsAdvancedFilter from "./stays-advanced-filters-rating";
 import TypesAdvancedFilters from "./stays-advanced-filters-types";
 
+/**
+ * Represents the advanced filters for stays, which includes the types and ratings.
+ * @returns The rendered advanced filters component.
+ */
 export default function StaysAdvancedFilters() {
   return (
     <DropDownMenu>

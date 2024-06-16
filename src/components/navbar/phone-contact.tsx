@@ -3,6 +3,7 @@ import { PhoneIcon } from "@heroicons/react/24/solid";
 /**
  * Renders a phone contact component.
  * Displays a phone icon and a phone number.
+ * @returns The rendered PhoneContact component.
  */
 export default function PhoneContact() {
   return (

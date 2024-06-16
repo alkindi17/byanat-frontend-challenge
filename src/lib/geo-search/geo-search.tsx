@@ -17,7 +17,6 @@ export interface GeoNamesResponse {
 
 /**
  * Custom hook for performing a geo search.
- *
  * @returns An object containing the loading state, query value, query setter, and search results.
  */
 export const useGeoSearch = () => {

@@ -5,6 +5,11 @@ import { Provider } from "react-redux";
 
 import { makeStore, AppStore } from "./store";
 
+/**
+ * A provider component that wraps the application in a Redux store.
+ * @param children The child components to render.
+ * @returns The rendered StoreProvider component.
+ */
 export default function StoreProvider({
   children,
 }: {
