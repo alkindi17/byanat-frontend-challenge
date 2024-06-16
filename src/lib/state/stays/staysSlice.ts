@@ -1,7 +1,7 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { StayType } from "@/components/main/stays/stay-type";
-import { StaysListType } from "@/components/main/stays/stays-list";
+import { Stays } from "@/components/main/stays/stays-list";
 
 import staysJson from "../../../../public/data/stays.json";
 
@@ -9,8 +9,11 @@ import staysJson from "../../../../public/data/stays.json";
  * Represents the state of the "stays" slice.
  */
 interface StaysState {
-  allStays: StaysListType;
-  filteredStays: StaysListType;
+  allStays: Stays;
+  filteredStays: Stays;
+  isLoading: boolean;
+  isDataFetched: boolean;
+  isDataUpdated: boolean;
   filters: {
     cityQuery: string;
     toggles: {
@@ -29,8 +32,11 @@ interface StaysState {
  * Represents the initial state of the "stays" slice.
  */
 const initialState: StaysState = {
-  allStays: staysJson as StaysListType,
-  filteredStays: staysJson as StaysListType, // Initially, the filtered stays are the same as the all stays.
+  allStays: [],
+  filteredStays: [], // Initially, the filtered stays are the same as the all stays.
+  isLoading: true,
+  isDataFetched: false,
+  isDataUpdated: false,
   filters: {
     cityQuery: "",
     toggles: {
@@ -53,10 +59,6 @@ const initialState: StaysState = {
  * Filters the stays based on the current filters.
  * @param state - The current state.
  */
-/**
- * Filters the stays based on the provided state filters.
- * @param state - The current state of stays.
- */
 const filterStays = (state: StaysState) => {
   state.filteredStays = state.allStays.filter((stay) => {
     return (
@@ -66,7 +68,7 @@ const filterStays = (state: StaysState) => {
       (state.filters.toggles.discount ? stay.discount : true) &&
       // Check if instant book filter is enabled and stay has instant book option
       (state.filters.toggles.instantBook ? stay.instantBook : true) &&
-      // Check if entire studio apartment filter is enabled and stay is of type "Entire Studio Apartment"
+      // Check if stay type is one of the enabled types
       (Object.entries(state.filters.types).filter(([type, enabled]) => enabled)
         .length >= 1
         ? Object.entries(state.filters.types).some(
@@ -115,6 +117,29 @@ const staysSlice = createSlice({
       filterStays(state);
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchStays.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(
+      fetchStays.fulfilled,
+      (state, action: PayloadAction<Stays>) => {
+        state.isLoading = false;
+        state.allStays = action.payload;
+        state.filteredStays = action.payload;
+        filterStays(state);
+      },
+    );
+  },
+});
+
+/**
+ * Simulate a delay to show the loading state, just for challenge purposes.
+ * @returns A promise that resolves after 1 second.
+ */
+export const fetchStays = createAsyncThunk("stays/fetchStays", async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return staysJson as Stays;
 });
 
 export const {
