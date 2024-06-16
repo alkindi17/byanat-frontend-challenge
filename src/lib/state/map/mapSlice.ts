@@ -38,6 +38,7 @@ const mapSlice = createSlice({
     ) {
       state.viewport.latitude = Number(action.payload.latitude);
       state.viewport.longitude = Number(action.payload.longitude);
+      state.viewport.zoom = 13;
     },
   },
 });
