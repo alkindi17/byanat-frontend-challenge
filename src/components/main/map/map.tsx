@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 
-import ReactMapGL, { NavigationControl } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Popup } from "react-map-gl";
 import type { MapRef } from "react-map-gl";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -10,6 +10,7 @@ import { setViewport } from "@/lib/state/map/mapSlice";
 import { RootState } from "@/lib/state/store";
 
 import "mapbox-gl/dist/mapbox-gl.css";
+import StayMarker from "./stay-marker";
 
 /**
  * Renders a map
@@ -38,6 +39,11 @@ export default function Map() {
         maxZoom={15}
       >
         <NavigationControl showCompass={false} />
+        <StayMarker
+          text="155K"
+          latitude={23.578946558272524}
+          longitude={58.298974335486875}
+        />
       </ReactMapGL>
     </div>
   );

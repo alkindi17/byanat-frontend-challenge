@@ -10,6 +10,8 @@ export interface Stay {
   id: number;
   title: string;
   city: string;
+  latitude: number;
+  longitude: number;
   rating: number;
   host: string;
   guests: number;
