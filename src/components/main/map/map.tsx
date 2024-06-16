@@ -26,7 +26,7 @@ export default function Map() {
   const mapRef = useRef<MapRef>(null);
 
   return (
-    <div className="h-full px-2 pb-7">
+    <div className="h-full px-2 pb-7 pt-9">
       <ReactMapGL
         {...viewport}
         style={{ width: "100%", height: "100%", borderRadius: "1rem" }}
