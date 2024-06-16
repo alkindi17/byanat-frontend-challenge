@@ -49,9 +49,10 @@ export default function StaysList() {
     }
   }, [dispatch, isDataFetched, isDataUpdated]);
 
+  // Show a loading skeleton if the stays are loading.
   if (isStaysLoading) {
     return (
-      <div className="grid grid-flow-row auto-rows-fr gap-6 pb-10">
+      <div className="grid grid-flow-row auto-rows-fr gap-6 pb-7">
         <StayCardSkeleton />
         <StayCardSkeleton />
         <StayCardSkeleton />
@@ -60,8 +61,9 @@ export default function StaysList() {
     );
   }
 
+  // Show the stays list if the stays finished loading.
   return (
-    <div className="grid grid-flow-row auto-rows-fr gap-6 pb-10">
+    <div className="grid grid-flow-row auto-rows-fr gap-6 pb-7">
       {staysListData.map((stay) => (
         <StayCard key={stay.id} stay={stay} />
       ))}
