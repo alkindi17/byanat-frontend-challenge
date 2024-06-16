@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import mapReducer from "./map/mapSlice";
 import staysReducer from "./stays/staysSlice";
 
 /**
@@ -10,6 +11,7 @@ export const makeStore = () => {
   return configureStore({
     reducer: {
       stays: staysReducer,
+      map: mapReducer,
     },
   });
 };

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { GeoNamesResponse } from "@/lib/geo-search/geo-search";
+import { GeoName, GeoNames } from "@/lib/geo-search/geo-search";
+import { setCoordinates } from "@/lib/state/map/mapSlice";
 import { setCityQuery } from "@/lib/state/stays/staysSlice";
 import { RootState } from "@/lib/state/store";
 
@@ -18,7 +19,7 @@ export default function SearchBoxHints({
   clearQuery,
 }: {
   loading: boolean;
-  results: GeoNamesResponse["geonames"];
+  results: GeoNames;
   query: string;
   clearQuery: () => void;
 }) {
@@ -30,8 +31,9 @@ export default function SearchBoxHints({
   // Get the dispatch function.
   const dispatch = useDispatch();
 
-  const handleCityClick = (city: string) => {
-    dispatch(setCityQuery(city));
+  const handleCityClick = (city: GeoName) => {
+    dispatch(setCityQuery(city.name + ", " + city.countryName));
+    dispatch(setCoordinates({ latitude: city.lat, longitude: city.lng }));
     clearQuery();
   };
 
@@ -49,9 +51,7 @@ export default function SearchBoxHints({
             <li
               className="cursor-pointer px-4 py-2 hover:bg-gray-100"
               key={index}
-              onClick={() =>
-                handleCityClick(result.name + ", " + result.countryName)
-              }
+              onClick={() => handleCityClick(result)}
             >
               {result.name + ", " + result.countryName}
             </li>

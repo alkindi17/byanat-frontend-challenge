@@ -4,15 +4,28 @@ import { useState, useEffect } from "react";
 
 import fetchGeoSearch from "./geo-search-fetch";
 
+/**
+ * Represents a GeoName object.
+ */
+export interface GeoName {
+  name: string;
+  toponymName: string;
+  countryName: string;
+  countryCode: string;
+  lat: `${number}`;
+  lng: `${number}`;
+}
+
+/**
+ * Represents a list of GeoNames.
+ */
+export type GeoNames = GeoName[];
+
+/**
+ * Represents a GeoNames response.
+ */
 export interface GeoNamesResponse {
-  geonames: {
-    name: string;
-    toponymName: string;
-    countryName: string;
-    countryCode: string;
-    lat: string;
-    lng: string;
-  }[];
+  geonames: GeoNames;
 }
 
 /**
@@ -21,7 +34,7 @@ export interface GeoNamesResponse {
  */
 export const useGeoSearch = () => {
   const [query, setQuery] = useState<string>("");
-  const [results, setResults] = useState<GeoNamesResponse["geonames"]>([]);
+  const [results, setResults] = useState<GeoNames>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   // Perform a search using the GeoNames API.
