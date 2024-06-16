@@ -18,8 +18,8 @@ export default function StayMarker({
             <div className="h-[150px] w-[150px] object-cover">
               <Image
                 src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                width={100}
-                height={100}
+                width={150}
+                height={150}
                 alt="A stay image"
                 className="h-full w-full rounded-md object-cover"
               />
