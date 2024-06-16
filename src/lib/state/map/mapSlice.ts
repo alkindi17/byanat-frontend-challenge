@@ -15,7 +15,7 @@ const initialState: MapState = {
   viewport: {
     latitude: 23.578946558272524,
     longitude: 58.298974335486875,
-    zoom: 11,
+    zoom: 10,
     bearing: 0,
     pitch: 0,
     padding: { top: 0, right: 0, bottom: 0, left: 0 },

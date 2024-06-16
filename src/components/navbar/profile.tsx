@@ -34,7 +34,7 @@ export default function ProfileDropDown() {
         {/* User's email */}
         <DropDownMenuContentSection>
           <DropDownMenuContentSectionItem>
-            <p className="truncate font-extralight">john.dahl@byanat.ai</p>
+            <p className="truncate font-extralight">john.doe@byanat.ai</p>
           </DropDownMenuContentSectionItem>
         </DropDownMenuContentSection>
 

@@ -22,6 +22,7 @@ export interface Stay {
   freeCancellation: boolean;
   discount: boolean;
   instantBook: boolean;
+  price: number;
 }
 
 /**
