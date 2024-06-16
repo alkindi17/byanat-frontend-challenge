@@ -31,7 +31,7 @@ export default function StayCard({ stay }: { stay: Stay }) {
   return (
     <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:max-h-[400px] xl:min-h-[200px]">
       {/* Stay Image */}
-      <div className="h-full w-full basis-1/2 rounded-2xl bg-red-200 object-cover max-xl:h-[150px]">
+      <div className="bg-grey-100 h-full w-full basis-1/2 rounded-2xl object-cover max-xl:h-[150px]">
         <Image
           src={stay.image}
           alt={stay.title}
