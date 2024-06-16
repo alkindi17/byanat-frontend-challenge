@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import PhoneContact from "./phone-contact";
 import ProfileDropDown from "./profile";
@@ -16,7 +17,9 @@ export default function Navbar() {
           {/* Logo and Search Box */}
           <div className="flex flex-1 items-center gap-6">
             <div className="w-10">
-              <Image src="/logo.svg" alt="Logo" width={46} height={46} />
+              <Link href="/">
+                <Image src="/logo.svg" alt="Logo" width={46} height={46} />
+              </Link>
             </div>
             <div className="flex-1 max-md:hidden">
               {/* Search Box for Desktop */}
