@@ -125,6 +125,7 @@ const staysSlice = createSlice({
       fetchStays.fulfilled,
       (state, action: PayloadAction<Stays>) => {
         state.isLoading = false;
+        state.isDataFetched = true;
         state.allStays = action.payload;
         state.filteredStays = action.payload;
         filterStays(state);
