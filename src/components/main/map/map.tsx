@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-
 import ReactMapGL, { NavigationControl } from "react-map-gl";
 import type { MapRef } from "react-map-gl";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,8 +20,6 @@ export default function Map() {
 
   // Get the dispatch function
   const dispatch = useDispatch();
-
-  const mapRef = useRef<MapRef>(null);
 
   return (
     <div className="h-full px-2 pb-7 pt-9">
