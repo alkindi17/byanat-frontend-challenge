@@ -6,7 +6,7 @@ export default function StayCardSkeleton() {
   return (
     <div
       role="status"
-      className="flex h-full animate-pulse gap-3 rounded-2xl border bg-white p-4 shadow-lg max-xl:flex-col xl:h-[200px] xl:max-h-[400px] xl:min-h-[200px]"
+      className="flex h-full animate-pulse gap-3 rounded-2xl border bg-white p-4 shadow-lg max-xl:flex-col xl:h-[250px]"
     >
       <div className="w-full rounded-2xl bg-gray-200 max-xl:h-[150px] xl:h-full"></div>
 

@@ -26,7 +26,8 @@ export default function SearchBoxInput({
 
   return (
     <>
-      {!cityQuery ? (
+      {!cityQuery.adminName && !cityQuery.countryName ? (
+        // Display the search box input when no city is selected
         <input
           type="text"
           id="search-box"
@@ -36,12 +37,15 @@ export default function SearchBoxInput({
           placeholder="Search for a city"
         />
       ) : (
+        // Display the city query as a pill when a city is selected
         <div className="flex w-full min-w-0 flex-1 items-center border border-gray-300 px-2.5 text-sm text-gray-600">
           <button
             className="flex items-center gap-2 rounded-lg bg-[#F6C002] bg-opacity-[26%] px-3 py-1"
-            onClick={() => dispatch(setCityQuery(""))}
+            onClick={() =>
+              dispatch(setCityQuery({ adminName: "", countryName: "" }))
+            }
           >
-            <span>{cityQuery}</span>
+            <span>{cityQuery.adminName + ", " + cityQuery.countryName}</span>
             <XCircleIcon className="h-5 w-5" />
           </button>
         </div>

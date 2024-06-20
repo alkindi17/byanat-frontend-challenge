@@ -12,8 +12,12 @@ export default function StaysHeader() {
     (state: RootState) => state.stays.filters.cityQuery,
   );
 
-  if (cityQuery) {
-    return <h1 className="text-4xl font-extrabold">Stays in {cityQuery}</h1>;
+  if (cityQuery.adminName && cityQuery.countryName) {
+    return (
+      <h1 className="text-4xl font-extrabold">
+        Stays in {cityQuery.adminName + ", " + cityQuery.countryName}
+      </h1>
+    );
   }
 
   return <h1 className="text-4xl font-extrabold">All Stays</h1>;

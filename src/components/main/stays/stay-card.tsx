@@ -4,14 +4,23 @@ import Image from "next/image";
 import StayTypeIcon, { StayType } from "./stay-type";
 
 /**
+ * Represents a city.
+ */
+export interface City {
+  adminName2: string;
+  adminName1: string;
+  countryName: string;
+}
+
+/**
  * Represents a stay.
  */
 export interface Stay {
   id: number;
   title: string;
-  city: string;
-  latitude: number;
-  longitude: number;
+  city: City;
+  latitude: number | null;
+  longitude: number | null;
   rating: number;
   host: string;
   guests: number;
@@ -32,7 +41,7 @@ export interface Stay {
  */
 export default function StayCard({ stay }: { stay: Stay }) {
   return (
-    <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:max-h-[400px] xl:min-h-[200px]">
+    <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:h-[250px]">
       {/* Stay Image */}
       <div className="bg-grey-100 h-full w-full basis-1/2 rounded-2xl object-cover max-xl:h-[150px]">
         <Image

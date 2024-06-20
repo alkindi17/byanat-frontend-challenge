@@ -2,7 +2,11 @@
   {
     "id": 1,
     "title": "Fully Furnished Smart Studio Apartment",
-    "city": "Muscat, Oman",
+    "city": {
+      "adminName2": "As Sib",
+      "adminName1": "Muscat",
+      "countryName": "Oman"
+    },
     "latitude": 23.578946558272524,
     "longitude": 58.298974335486875,
     "rating": 3.8,
@@ -20,7 +24,11 @@
   {
     "id": 2,
     "title": "Luxury Apartment with Panoramic View",
-    "city": "Muscat, Oman",
+    "city": {
+      "adminName2": "As Sib",
+      "adminName1": "Muscat",
+      "countryName": "Oman"
+    },
     "latitude": 23.612654140848264,
     "longitude": 58.18288487407331,
     "rating": 4.9,
@@ -38,7 +46,11 @@
   {
     "id": 3,
     "title": "Modern Apartment with Sea View",
-    "city": "Nizwá, Oman",
+    "city": {
+      "adminName2": "Nizwá",
+      "adminName1": "Ad Dakhiliyah",
+      "countryName": "Oman"
+    },
     "latitude": 22.931710348113103,
     "longitude": 57.53083254072869,
     "rating": 4.7,
@@ -56,7 +68,11 @@
   {
     "id": 4,
     "title": "Fully Furnished Smart Studio Apartment",
-    "city": "Muscat, Oman",
+    "city": {
+      "adminName2": "As Sib",
+      "adminName1": "Muscat",
+      "countryName": "Oman"
+    },
     "latitude": 23.57555389901351,
     "longitude": 58.3699629899406,
     "rating": 4.8,

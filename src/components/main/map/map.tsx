@@ -1,12 +1,13 @@
 "use client";
 
 import ReactMapGL, { NavigationControl } from "react-map-gl";
-import type { MapRef } from "react-map-gl";
 import { useSelector, useDispatch } from "react-redux";
 
+import { showModal } from "@/lib/state/add-stay-modal/addStayModalSlice";
 import { setViewport } from "@/lib/state/map/mapSlice";
 import { RootState } from "@/lib/state/store";
 
+import AddStayModal from "./add-stay-form/add-stay-modal";
 import "mapbox-gl/dist/mapbox-gl.css";
 import StaysMarkersList from "./stays-markers-list";
 
@@ -31,12 +32,23 @@ export default function Map() {
         onMove={(evt) => {
           dispatch(setViewport(evt.viewState));
         }}
-        minZoom={5}
+        minZoom={2}
         maxZoom={15}
+        onClick={(e) => {
+          // Show the Add Stay Modal when the map is clicked
+          dispatch(
+            showModal({ latitude: e.lngLat.lat, longitude: e.lngLat.lng }),
+          );
+        }}
       >
         <NavigationControl showCompass={false} />
-        <StaysMarkersList />
+
+        {/* Render the stays markers if zoom is 5 or more */}
+        {viewport.zoom >= 5 && <StaysMarkersList />}
       </ReactMapGL>
+
+      {/* Show the Add Stay Modal if the modal is open */}
+      <AddStayModal />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import addStayReducer from "./add-stay-modal/addStayModalSlice";
 import mapReducer from "./map/mapSlice";
 import staysReducer from "./stays/staysSlice";
 
@@ -12,6 +13,7 @@ export const makeStore = () => {
     reducer: {
       stays: staysReducer,
       map: mapReducer,
+      addStayModal: addStayReducer,
     },
   });
 };

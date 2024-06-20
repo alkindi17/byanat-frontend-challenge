@@ -2,8 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { StayType } from "@/components/main/stays/stay-type";
 import { Stays } from "@/components/main/stays/stays-list";
-
-import staysJson from "../../../../public/data/stays.json";
+import getStays from "@/lib/repository/stays/get-stays";
 
 /**
  * Represents the state of the "stays" slice.
@@ -15,7 +14,10 @@ interface StaysState {
   isDataFetched: boolean;
   isDataUpdated: boolean;
   filters: {
-    cityQuery: string;
+    cityQuery: {
+      adminName: string;
+      countryName: string;
+    };
     toggles: {
       freeCancellation: boolean;
       discount: boolean;
@@ -38,7 +40,10 @@ const initialState: StaysState = {
   isDataFetched: false,
   isDataUpdated: false,
   filters: {
-    cityQuery: "",
+    cityQuery: {
+      adminName: "",
+      countryName: "",
+    },
     toggles: {
       // The filter toggles.
       freeCancellation: false,
@@ -77,8 +82,16 @@ const filterStays = (state: StaysState) => {
         : true) &&
       // Check if stay rating is greater than or equal to the minimum rating filter
       stay.rating >= state.filters.minimumRating &&
-      // Check if stay name contains the query
-      stay.city.toLowerCase().includes(state.filters.cityQuery.toLowerCase())
+      // Check if stay city matches the city query
+      (stay.city.adminName1
+        .toLowerCase()
+        .includes(state.filters.cityQuery.adminName.toLowerCase()) ||
+        stay.city.adminName2
+          .toLowerCase()
+          .includes(state.filters.cityQuery.adminName.toLowerCase())) &&
+      stay.city.countryName
+        .toLowerCase()
+        .includes(state.filters.cityQuery.countryName.toLowerCase())
     );
   });
 };
@@ -112,9 +125,16 @@ const staysSlice = createSlice({
       state.filters.minimumRating = action.payload;
       filterStays(state);
     },
-    setCityQuery: (state, action: PayloadAction<string>) => {
-      state.filters.cityQuery = action.payload;
+    setCityQuery: (
+      state,
+      action: PayloadAction<{ adminName: string; countryName: string }>,
+    ) => {
+      state.filters.cityQuery.adminName = action.payload.adminName;
+      state.filters.cityQuery.countryName = action.payload.countryName;
       filterStays(state);
+    },
+    setDataIsUpdated: (state) => {
+      state.isDataUpdated = true;
     },
   },
   extraReducers: (builder) => {
@@ -125,6 +145,7 @@ const staysSlice = createSlice({
       fetchStays.fulfilled,
       (state, action: PayloadAction<Stays>) => {
         state.isLoading = false;
+        state.isDataUpdated = false;
         state.isDataFetched = true;
         state.allStays = action.payload;
         state.filteredStays = action.payload;
@@ -140,7 +161,7 @@ const staysSlice = createSlice({
  */
 export const fetchStays = createAsyncThunk("stays/fetchStays", async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  return staysJson as Stays;
+  return await getStays();
 });
 
 export const {
@@ -149,6 +170,7 @@ export const {
   toggleInstantBook,
   toggleType,
   setMinimumRating,
+  setDataIsUpdated,
   setCityQuery,
 } = staysSlice.actions;
 

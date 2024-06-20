@@ -32,12 +32,17 @@ export default function SearchBoxHints({
   const dispatch = useDispatch();
 
   const handleCityClick = (city: GeoName) => {
-    dispatch(setCityQuery(city.name + ", " + city.countryName));
+    dispatch(
+      setCityQuery({
+        adminName: city.name,
+        countryName: city.countryName,
+      }),
+    );
     dispatch(setCoordinates({ latitude: city.lat, longitude: city.lng }));
     clearQuery();
   };
 
-  if (!query || cityQuery) {
+  if (!query || cityQuery.adminName || cityQuery.countryName) {
     return null;
   }
 
