@@ -26,7 +26,7 @@ import { Stay } from "../../stays/stay-card";
  * @returns the Add Stay Form component
  */
 export default function AddStayForm() {
-  const { setCoordinates, results } = useGeoFindNearby();
+  const { setCoordinates, results, loading } = useGeoFindNearby();
 
   // Get the stay details
   const stayDetails = useSelector(
@@ -64,6 +64,15 @@ export default function AddStayForm() {
           adminName1: result.adminName1,
           adminName2: result.name,
           countryName: result.countryName,
+        },
+      });
+    } else {
+      handleUpdateStayField({
+        field: "city",
+        value: {
+          adminName1: "",
+          adminName2: "",
+          countryName: "",
         },
       });
     }
@@ -123,12 +132,14 @@ export default function AddStayForm() {
               id="city"
               type="text"
               value={
-                stayDetails.city.adminName1.length !== 0
-                  ? stayDetails.city.adminName2 +
-                    ", " +
-                    stayDetails.city.adminName1 +
-                    ", " +
-                    stayDetails.city.countryName
+                !loading
+                  ? results.length > 0
+                    ? stayDetails.city.adminName2 +
+                      ", " +
+                      stayDetails.city.adminName1 +
+                      ", " +
+                      stayDetails.city.countryName
+                    : "City not found"
                   : "Loading..."
               }
               className="w-full"
