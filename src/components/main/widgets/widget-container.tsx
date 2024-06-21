@@ -28,7 +28,7 @@ export default function WidgetContainer({
             <DragIndicator className="w-5" />
           </div>
         </div>
-        <div className="h-[140px] flex-1 items-center">{children}</div>
+        <div className="min-h-[140px] flex-1 items-center">{children}</div>
       </div>
     </div>
   );

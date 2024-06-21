@@ -7,50 +7,48 @@ import dynamic from "next/dynamic";
 
 import ChartSkeleton from "../chart-skeleton";
 
+// The initial options for the donut chart.
+const initialOptions: ApexOptions = {
+  chart: {
+    id: "profit-and-loss-donut-chart",
+    type: "donut",
+    height: "100%",
+    width: "100%",
+  },
+  labels: ["Re-used APIs", "Webhooks", "API Calls"],
+  series: [36, 38, 25],
+  colors: ["#FD2254", "#00B7FE", "#D0D2DA"],
+  dataLabels: {
+    enabled: false,
+  },
+  plotOptions: {
+    pie: {
+      donut: {
+        size: "65%",
+      },
+    },
+  },
+  legend: {
+    show: false,
+    formatter: function (seriesName, opts) {
+      return seriesName + "\n" + opts.w.globals.series[opts.seriesIndex] + "%";
+    },
+    position: "left",
+    fontSize: "10px",
+    fontWeight: 100,
+    markers: {
+      width: 5,
+      height: 5,
+    },
+    width: 100,
+  },
+};
+
 /**
  * A donut chart that shows the profit and loss.
  * @returns The profit and loss chart component.
  */
 export default function ProfitAndLossChart() {
-  // The initial options for the donut chart.
-  const initialOptions: ApexOptions = {
-    chart: {
-      id: "profit-and-loss-donut-chart",
-      type: "donut",
-      height: "100%",
-      width: "100%",
-    },
-    labels: ["Re-used APIs", "Webhooks", "API Calls"],
-    series: [36, 38, 25],
-    colors: ["#FD2254", "#00B7FE", "#D0D2DA"],
-    dataLabels: {
-      enabled: false,
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: "65%",
-        },
-      },
-    },
-    legend: {
-      show: false,
-      formatter: function (seriesName, opts) {
-        return (
-          seriesName + "\n" + opts.w.globals.series[opts.seriesIndex] + "%"
-        );
-      },
-      position: "left",
-      fontSize: "10px",
-      fontWeight: 100,
-      markers: {
-        width: 5,
-        height: 5,
-      },
-      width: 100,
-    },
-  };
-
   // The options for the donut chart.
   const [options, setOptions] = useState<ApexOptions>(initialOptions);
 
