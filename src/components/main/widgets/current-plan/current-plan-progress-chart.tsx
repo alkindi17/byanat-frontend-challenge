@@ -21,7 +21,7 @@ const initialData = [
   },
   {
     title: "Requests/day",
-    progress: 7000,
+    progress: 7500,
     total: 10000,
     barColor: "#FD2254",
     bgColor: "#FFF2F5",
