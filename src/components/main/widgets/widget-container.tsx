@@ -1,14 +1,35 @@
+import DragIndicator from "@/components/ui/drag-indicator";
+
 /**
  * WidgetContainer component that wraps a widget.
  * @param children The children of the widget container.
+ * @param title The title of the widget
+ * @param subtitle The subtitle of the widget
  * @returns The widget container component.
  */
 export default function WidgetContainer({
   children,
+  title,
+  subtitle,
 }: {
   children: React.ReactNode;
+  title?: string;
+  subtitle?: string;
 }) {
   return (
-    <div className="mx-4 rounded-2xl bg-white p-6 shadow-xl">{children}</div>
+    <div className="mx-4 rounded-2xl bg-white p-6 shadow-xl">
+      <div className="flex h-full flex-col gap-6">
+        <div className="flex justify-between">
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold">{title}</h3>
+            <p className="text-xs text-gray-400">{subtitle}</p>
+          </div>
+          <div className="w-5 text-gray-400">
+            <DragIndicator className="w-full" />
+          </div>
+        </div>
+        <div className="h-[140px] flex-1 items-center">{children}</div>
+      </div>
+    </div>
   );
 }
