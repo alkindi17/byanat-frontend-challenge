@@ -211,7 +211,6 @@ export default function StayDetailsFields({
             };
             reader.readAsDataURL(file);
           }}
-          required
         />
       </div>
     </div>

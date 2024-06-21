@@ -41,9 +41,9 @@ export interface Stay {
  */
 export default function StayCard({ stay }: { stay: Stay }) {
   return (
-    <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-xl:flex-col xl:h-[215px]">
+    <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-sm:flex-col sm:h-[215px]">
       {/* Stay Image */}
-      <div className="bg-grey-100 h-full w-full basis-1/2 rounded-2xl object-cover max-xl:h-[150px]">
+      <div className="bg-grey-100 h-full w-full basis-1/2 rounded-2xl object-cover max-sm:h-[150px] sm:max-w-[250px]">
         <Image
           src={stay.image}
           alt={stay.title}
