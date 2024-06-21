@@ -1,5 +1,6 @@
 import Map from "@/components/main/map/map";
 import Stays from "@/components/main/stays/stays";
+import Widgets from "@/components/main/widgets/widgets";
 
 export default function Home() {
   return (
@@ -10,7 +11,9 @@ export default function Home() {
       <div className="h-full basis-2/5">
         <Map />
       </div>
-      <div className="h-full basis-1/5 bg-white px-4 pt-9">Widgets</div>
+      <div className="h-full basis-1/5">
+        <Widgets />
+      </div>
     </main>
   );
 }
