@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 
-import ChartSkeleton from "./chart-skeleton";
+import ChartSkeleton from "../chart-skeleton";
 
 /**
  * A donut chart that shows the profit and loss.

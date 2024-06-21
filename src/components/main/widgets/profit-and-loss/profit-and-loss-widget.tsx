@@ -1,7 +1,5 @@
-import DragIndicator from "@/components/ui/drag-indicator";
-
 import ProfitAndLossChart from "./profit-and-loss-chart";
-import WidgetContainer from "./widget-container";
+import WidgetContainer from "../widget-container";
 
 /**
  * A widget that shows the profit and loss.

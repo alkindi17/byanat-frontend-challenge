@@ -24,8 +24,8 @@ export default function WidgetContainer({
             <h3 className="text-lg font-semibold">{title}</h3>
             <p className="text-xs text-gray-400">{subtitle}</p>
           </div>
-          <div className="w-5 text-gray-400">
-            <DragIndicator className="w-full" />
+          <div className="text-gray-400">
+            <DragIndicator className="w-5" />
           </div>
         </div>
         <div className="h-[140px] flex-1 items-center">{children}</div>
