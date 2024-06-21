@@ -48,7 +48,7 @@ export default function CurrentPlanProgressChart() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       {data.map((item) => (
         <div key={item.title} className="flex flex-col gap-1">
           <div className="flex justify-between">
