@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+
+import { MapIcon } from "@heroicons/react/24/outline";
 import ReactMapGL, { NavigationControl } from "react-map-gl";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -19,14 +22,31 @@ export default function Map() {
   // Get the viewport state
   const viewport = useSelector((state: RootState) => state.map.viewport);
 
+  // State to check if the map is loaded
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   // Get the dispatch function
   const dispatch = useDispatch();
 
   return (
     <div className="h-full px-2 pb-7 pt-9">
+      {!mapLoaded && (
+        <div className="flex h-full w-full animate-pulse items-center justify-center rounded-2xl bg-gray-200">
+          <MapIcon className="h-12 w-12 text-gray-400" />
+        </div>
+      )}
       <ReactMapGL
         {...viewport}
-        style={{ width: "100%", height: "100%", borderRadius: "1rem" }}
+        onLoad={() => {
+          setMapLoaded(true); // Set the map as loaded
+        }}
+        reuseMaps
+        style={{
+          width: "100%",
+          height: "100%",
+          opacity: mapLoaded ? 1 : 0, // Hide the map until it is loaded
+          borderRadius: "1rem",
+        }}
         mapStyle="mapbox://styles/mapbox/streets-v12"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
         onMove={(evt) => {
