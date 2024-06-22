@@ -3,7 +3,6 @@
 import fs from "fs";
 import path from "path";
 
-import { Stay } from "@/components/main/stays/stay-card";
 import { Stays } from "@/components/main/stays/stays-list";
 
 /**
@@ -18,6 +17,8 @@ export default async function getStays() {
       "utf-8",
     ),
   );
+
+  console.log(process.cwd(), "public/data/stays.json");
 
   return stays;
 }
