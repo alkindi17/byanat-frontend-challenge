@@ -5,15 +5,13 @@ import path from "path";
 
 import { Stay } from "@/components/main/stays/stay-card";
 
-const staysJsonPath = path.join(process.cwd(), "public/data/stays.json");
-
 /**
  * Adds a stay to database.
  * @param stay - The stay object.
  */
 export default async function addStay(stay: Stay) {
   // Read the current stays from the json file.
-  const stays = JSON.parse(fs.readFileSync(staysJsonPath, "utf-8"));
+  const stays = JSON.parse(fs.readFileSync("public/data/stays.json", "utf-8"));
 
   // Find the maximum id in the list of stays.
   const maxid = Math.max.apply(
@@ -48,5 +46,5 @@ export default async function addStay(stay: Stay) {
   stays.push(stay);
 
   // Write the updated stays to the json file.
-  fs.writeFileSync(staysJsonPath, JSON.stringify(stays, null, 2));
+  fs.writeFileSync("public/data/stays.json", JSON.stringify(stays, null, 2));
 }

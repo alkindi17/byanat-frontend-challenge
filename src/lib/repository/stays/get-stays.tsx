@@ -1,8 +1,8 @@
 "use server";
 
 import fs from "fs";
-import path from "path";
 
+import { Stay } from "@/components/main/stays/stay-card";
 import { Stays } from "@/components/main/stays/stays-list";
 
 /**
@@ -12,10 +12,7 @@ import { Stays } from "@/components/main/stays/stays-list";
 export default async function getStays() {
   // Read the current stays from the json file.
   const stays: Stays = JSON.parse(
-    fs.readFileSync(
-      path.join(__dirname, "../../..", "public", "data", "stays.json"),
-      "utf-8",
-    ),
+    fs.readFileSync("public/data/stays.json", "utf-8"),
   );
 
   return stays;
