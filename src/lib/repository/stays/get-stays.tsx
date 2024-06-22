@@ -12,13 +12,8 @@ import { Stays } from "@/components/main/stays/stays-list";
 export default async function getStays() {
   // Read the current stays from the json file.
   const stays: Stays = JSON.parse(
-    fs.readFileSync(
-      path.join(process.cwd(), "public/data/stays.json"),
-      "utf-8",
-    ),
+    fs.readFileSync(path.join("../../../../public/data/stays.json"), "utf-8"),
   );
-
-  console.log(process.cwd(), "public/data/stays.json");
 
   return stays;
 }
