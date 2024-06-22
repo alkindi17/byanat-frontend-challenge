@@ -13,8 +13,6 @@ export default function TypesAdvancedFilters() {
   // Get the current state of the filters.
   const types = useSelector((state: RootState) => state.stays.filters.types);
 
-  console.log(types);
-
   // Get the dispatch function.
   const dispatch = useDispatch();
 
