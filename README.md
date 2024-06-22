@@ -21,6 +21,11 @@ The objective of the challenge is to create a web application page using React t
 - **[Headless UI](https://headlessui.com)** - Used to implement custom dropdown menu.
 - **[Heroicons](https://heroicons.com)** - Used for icons.
 
+### Tests
+
+- **[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)** - Used for simple testing utilities.
+- **[Jest](https://testing-library.com)** - Testing Framework.
+
 ## How to run
 
 1. Clone the project and start the server
