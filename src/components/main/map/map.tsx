@@ -14,6 +14,9 @@ import AddStayModal from "./add-stay-form/add-stay-modal";
 import "mapbox-gl/dist/mapbox-gl.css";
 import StaysMarkersList from "./stays-markers-list";
 
+const MAPBOX_API_PUBLIC_TOKEN =
+  "pk.eyJ1Ijoia2luZGkxNzAzIiwiYSI6ImNseGhhY29neDE1cjEybnIybDF6dTZ2M2EifQ.dnHHVmi-Hx_0tYqGx1Lofw";
+
 /**
  * Renders a map
  * @returns a map component
@@ -48,7 +51,7 @@ export default function Map() {
           borderRadius: "1rem",
         }}
         mapStyle="mapbox://styles/mapbox/streets-v12"
-        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+        mapboxAccessToken={MAPBOX_API_PUBLIC_TOKEN}
         onMove={(evt) => {
           dispatch(setViewport(evt.viewState));
         }}
