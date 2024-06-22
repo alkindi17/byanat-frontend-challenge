@@ -26,7 +26,11 @@ export default function StayMarker({ stay }: { stay: Stay }) {
   };
 
   return (
-    <Marker latitude={stay.latitude} longitude={stay.longitude} anchor="bottom">
+    <Marker
+      latitude={stay.latitude!}
+      longitude={stay.longitude!}
+      anchor="bottom"
+    >
       <div className="group">
         <div className="relative flex items-center justify-center rounded-md bg-white px-2 py-1 font-bold drop-shadow-lg transition-transform hover:scale-110 hover:drop-shadow-xl group-hover:bottom-3 group-hover:h-[250px] group-hover:rounded-xl group-hover:px-3 group-hover:py-3">
           <div className="hidden h-full flex-col rounded-md bg-white drop-shadow-xl group-hover:flex">
