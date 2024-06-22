@@ -39,7 +39,10 @@ export default function Searchbox() {
   };
 
   return (
-    <div className="relative flex w-full md:max-w-[550px]">
+    <div
+      className="relative flex w-full md:max-w-[550px]"
+      data-testid="search-box"
+    >
       <select
         value={selectedSearchOption}
         onChange={(e) => setSelectedSearchOption(e.target.value)}

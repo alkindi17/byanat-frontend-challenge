@@ -15,47 +15,49 @@ import {
  */
 export default function ProfileDropDown() {
   return (
-    <DropDownMenu>
-      {/* Button showing the user's profile */}
-      <DropDownMenuButton>
-        <span className="sr-only">Open user menu</span>
-        <Image
-          className="me-2 h-8 w-8 rounded-full object-cover"
-          src="https://datasciencefestival.com/wp-content/uploads/2022/08/ben-parker-OhKElOkQ3RE-unsplash-scaled.jpg"
-          alt="user photo"
-          width={32}
-          height={32}
-        />
-        <p> John Doe</p>
-      </DropDownMenuButton>
+    <div data-testid="profile-dropdown">
+      <DropDownMenu>
+        {/* Button showing the user's profile */}
+        <DropDownMenuButton>
+          <span className="sr-only">Open user menu</span>
+          <Image
+            className="me-2 h-8 w-8 rounded-full object-cover"
+            src="https://datasciencefestival.com/wp-content/uploads/2022/08/ben-parker-OhKElOkQ3RE-unsplash-scaled.jpg"
+            alt="user photo"
+            width={32}
+            height={32}
+          />
+          <p> John Doe</p>
+        </DropDownMenuButton>
 
-      {/* Dropdown menu content */}
-      <DropDownMenuContent>
-        {/* User's email */}
-        <DropDownMenuContentSection>
-          <DropDownMenuContentSectionItem>
-            <p className="truncate font-extralight">john.doe@byanat.ai</p>
-          </DropDownMenuContentSectionItem>
-        </DropDownMenuContentSection>
+        {/* Dropdown menu content */}
+        <DropDownMenuContent>
+          {/* User's email */}
+          <DropDownMenuContentSection>
+            <DropDownMenuContentSectionItem>
+              <p className="truncate font-extralight">john.doe@byanat.ai</p>
+            </DropDownMenuContentSectionItem>
+          </DropDownMenuContentSection>
 
-        {/* Actions */}
-        <DropDownMenuContentSection>
-          <DropDownMenuContentSectionItemLink href="#">
-            Profile
-          </DropDownMenuContentSectionItemLink>
+          {/* Actions */}
+          <DropDownMenuContentSection>
+            <DropDownMenuContentSectionItemLink href="#">
+              Profile
+            </DropDownMenuContentSectionItemLink>
 
-          <DropDownMenuContentSectionItemLink href="#">
-            Settings
-          </DropDownMenuContentSectionItemLink>
-        </DropDownMenuContentSection>
+            <DropDownMenuContentSectionItemLink href="#">
+              Settings
+            </DropDownMenuContentSectionItemLink>
+          </DropDownMenuContentSection>
 
-        {/* Sign out */}
-        <DropDownMenuContentSection>
-          <DropDownMenuContentSectionItemLink href="#" danger>
-            Sign out
-          </DropDownMenuContentSectionItemLink>
-        </DropDownMenuContentSection>
-      </DropDownMenuContent>
-    </DropDownMenu>
+          {/* Sign out */}
+          <DropDownMenuContentSection>
+            <DropDownMenuContentSectionItemLink href="#" danger>
+              Sign out
+            </DropDownMenuContentSectionItemLink>
+          </DropDownMenuContentSection>
+        </DropDownMenuContent>
+      </DropDownMenu>
+    </div>
   );
 }

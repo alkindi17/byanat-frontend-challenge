@@ -12,7 +12,10 @@ export default function Stays() {
   // Get the stays list data.
 
   return (
-    <div className="flex h-full flex-col gap-8 overflow-scroll px-4 pt-9">
+    <div
+      className="flex h-full flex-col gap-8 overflow-scroll px-4 pt-9"
+      data-testid="stays-component"
+    >
       <StaysHeader />
       <StaysFilter />
       <StaysList />

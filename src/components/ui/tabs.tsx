@@ -45,7 +45,11 @@ export default function Tabs({
 
       <div className="h-full">
         {tabsData.map((tab) => {
-          return tab.title === activeTab && tab.component;
+          return (
+            tab.title === activeTab && (
+              <div key={tab.title}>{tab.component}</div>
+            )
+          );
         })}
       </div>
     </>

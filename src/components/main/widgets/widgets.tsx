@@ -64,37 +64,39 @@ export default function Widgets() {
   };
 
   return (
-    <DndContext
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-      onDragStart={handleDragStart}
-    >
-      <SortableContext items={widgets} strategy={verticalListSortingStrategy}>
-        <ul className="flex h-full flex-col gap-6 overflow-scroll pb-7 pt-9">
-          {widgets.map((widget) => (
-            <DndWidgetsWrapper
-              key={widget}
-              id={widget}
-              Component={widgetComponents[widget]}
-              isDragging={activeId === widget}
-            />
-          ))}
-        </ul>
-      </SortableContext>
-
-      <DragOverlay
-        dropAnimation={{
-          duration: 200,
-          easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
-        }}
-        modifiers={[restrictToVerticalAxis]}
+    <div data-testid="widgets-component" className="h-full">
+      <DndContext
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+        onDragStart={handleDragStart}
       >
-        {activeId ? (
-          <div className="shadow-lg">
-            {React.createElement(widgetComponents[activeId])}
-          </div>
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+        <SortableContext items={widgets} strategy={verticalListSortingStrategy}>
+          <ul className="flex h-full flex-col gap-6 overflow-scroll pb-7 pt-9">
+            {widgets.map((widget) => (
+              <DndWidgetsWrapper
+                key={widget}
+                id={widget}
+                Component={widgetComponents[widget]}
+                isDragging={activeId === widget}
+              />
+            ))}
+          </ul>
+        </SortableContext>
+
+        <DragOverlay
+          dropAnimation={{
+            duration: 200,
+            easing: "cubic-bezier(0.18, 0.67, 0.6, 1.22)",
+          }}
+          modifiers={[restrictToVerticalAxis]}
+        >
+          {activeId ? (
+            <div className="shadow-lg">
+              {React.createElement(widgetComponents[activeId])}
+            </div>
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+    </div>
   );
 }

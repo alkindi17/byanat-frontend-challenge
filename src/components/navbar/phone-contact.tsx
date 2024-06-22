@@ -7,7 +7,7 @@ import { PhoneIcon } from "@heroicons/react/24/solid";
  */
 export default function PhoneContact() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2" data-testid="phone-contact">
       <PhoneIcon className="h-4 w-4" />
       <p className="font-light max-sm:text-xs">+1 (800) 657 8976</p>
     </div>

@@ -32,7 +32,7 @@ export default function Map() {
   const dispatch = useDispatch();
 
   return (
-    <div className="h-full px-2 pb-7 pt-9">
+    <div className="h-full px-2 pb-7 pt-9" data-testid="map-component">
       {!mapLoaded && (
         <div className="flex h-full w-full animate-pulse items-center justify-center rounded-2xl bg-gray-200">
           <MapIcon className="h-12 w-12 text-gray-400" />
