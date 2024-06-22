@@ -30,13 +30,13 @@ export default async function addStay(stay: Stay) {
   const imageBuffer = Buffer.from(base64Data, "base64");
   const imagePath = path.join("public/data/images");
   const imageName = `${stay.id}.jpg`;
-  fs.writeFileSync(`${imagePath}/${imageName}`, imageBuffer);
 
   // Create the images directory if it doesn't exist.
   if (!fs.existsSync(imagePath)) {
     fs.mkdirSync(imagePath, { recursive: true });
   }
 
+  // Write the image to the images directory.
   fs.writeFileSync(path.join(imagePath, imageName), imageBuffer);
 
   // Update the image path of the stay.
