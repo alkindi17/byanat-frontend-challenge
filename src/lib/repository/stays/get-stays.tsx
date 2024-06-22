@@ -13,7 +13,7 @@ export default async function getStays() {
   // Read the current stays from the json file.
   const stays: Stays = JSON.parse(
     fs.readFileSync(
-      path.join(process.cwd(), "public", "data", "stays.json"),
+      path.join(__dirname, "../../..", "public", "data", "stays.json"),
       "utf-8",
     ),
   );
