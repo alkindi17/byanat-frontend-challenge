@@ -1,5 +1,8 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { UseDispatch, useDispatch } from "react-redux";
+
+import { setCoordinates } from "@/lib/state/map/mapSlice";
 
 import StayTypeIcon, { StayType } from "./stay-type";
 
@@ -40,8 +43,24 @@ export interface Stay {
  * @returns The rendered StayCard component.
  */
 export default function StayCard({ stay }: { stay: Stay }) {
+  // Get the dispatch function
+  const dispatch = useDispatch();
+
+  // Set the coordinates of the stay when the card is clicked
+  const handleClick = () => {
+    dispatch(
+      setCoordinates({
+        latitude: `${stay.latitude!}`,
+        longitude: `${stay.longitude!}`,
+      }),
+    );
+  };
+
   return (
-    <div className="flex gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg max-sm:flex-col sm:h-[215px]">
+    <div
+      className="flex cursor-pointer gap-3 rounded-2xl border bg-white p-4 font-light shadow-lg hover:bg-gray-100 max-sm:flex-col sm:h-[215px]"
+      onClick={handleClick}
+    >
       {/* Stay Image */}
       <div className="bg-grey-100 h-full w-full basis-1/2 rounded-2xl object-cover max-sm:h-[150px] sm:max-w-[250px]">
         <Image
