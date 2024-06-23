@@ -6,7 +6,7 @@ The objective of the challenge is to create a web application page using React t
 
 ## Project
 
-### Brief description
+### Brief Description
 
 This web application shows a comprehensive list of rental stays. Users can filter by rating, stay type, or other criteria. An interactive world map details all available stays, and a search bar helps find stays in any city. A widgets section provides detailed statistics.
 
